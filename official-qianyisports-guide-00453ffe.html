@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>千亿体育 · 主题知识库</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f7fc;
+      color: #1e293b;
+      line-height: 1.65;
+    }
+
+    /* ── 深色头图 ── */
+    .hero {
+      background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+      color: #e6edf5;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(56, 178, 172, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      opacity: 0.7;
+      max-width: 560px;
+      margin: 0 auto 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .meta-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #b0c9dd;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── 主容器 ── */
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── 目录感布局 ── */
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #64748b;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s ease;
+      border: 1px solid #e9edf3;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 20, 40, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3 span {
+      background: #eef2f6;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.6rem;
+      color: #334155;
+      font-weight: 400;
+    }
+
+    .card p {
+      color: #334155;
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #e7edf5;
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.75rem;
+      color: #1e3a5f;
+      margin-top: 0.9rem;
+    }
+
+    /* ── 说明区 ── */
+    .intro-block {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 2.2rem;
+      margin: 1.5rem 0 2.8rem;
+      border: 1px solid #e5eaef;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .intro-block .label {
+      font-size: 0.75rem;
+      color: #5f7a95;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.25rem;
+    }
+
+    .intro-block h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #0b1e32;
+      margin-bottom: 1rem;
+    }
+
+    .intro-block p {
+      margin-bottom: 1rem;
+      color: #1e2f3f;
+    }
+
+    .intro-block a {
+      color: #0f6b6b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .intro-block a:hover {
+      border-bottom-color: #0f6b6b;
+    }
+
+    /* ── 提示区 ── */
+    .tip-box {
+      background: #e9f1f9;
+      border-left: 4px solid #2d7a8c;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin: 2.2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .tip-box .icon {
+      font-size: 1.3rem;
+      background: #d3e3f0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tip-box .tip-content {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .tip-box .tip-content p {
+      margin: 0.1rem 0;
+      color: #0f2c3c;
+    }
+
+    .tip-box .tip-content .small-note {
+      font-size: 0.85rem;
+      color: #405c72;
+      margin-top: 0.3rem;
+    }
+
+    /* ── 相关信息区 ── */
+    .info-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #d9e1ea;
+    }
+
+    .info-col {
+      flex: 1 1 200px;
+    }
+
+    .info-col h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1e3b4f;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    .info-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-col li {
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+      color: #2b4057;
+      border-bottom: 1px dashed #dce4ed;
+    }
+
+    .info-col li:last-child {
+      border-bottom: none;
+    }
+
+    .info-col a {
+      color: #0f6b6b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .info-col a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── FAQ 摘要 ── */
+    .faq-mini {
+      margin: 2.5rem 0 1rem;
+    }
+
+    .faq-mini details {
+      background: white;
+      border-radius: 14px;
+      padding: 0.8rem 1.5rem;
+      margin-bottom: 0.8rem;
+      border: 1px solid #dfe7ef;
+      transition: background 0.1s;
+    }
+
+    .faq-mini details[open] {
+      background: #fafcff;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      cursor: pointer;
+      color: #0f3247;
+      padding: 0.3rem 0;
+      font-size: 0.98rem;
+    }
+
+    .faq-mini details p {
+      margin: 0.5rem 0 0.2rem;
+      color: #364f64;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ── 响应式细节 ── */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .wrapper {
+        padding: 1.8rem 1rem 3rem;
+      }
+
+      .intro-block {
+        padding: 1.5rem;
+      }
+
+      .tip-box {
+        padding: 1.2rem 1.2rem;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .info-area {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+    }
+
+    /* ── 辅助 ── */
+    .mt-small { margin-top: 0.5rem; }
+    .text-muted { color: #5e738c; }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>千亿体育 · 主题知识库</h1>
+    <p class="sub">从关键词出发，构建可查阅、可延伸的内容索引<br>围绕「千亿体育」展开的叙述式信息页</p>
+    <span class="meta-tag">知识库 · 目录式入口</span>
+  </header>
+
+  <main class="wrapper">
+
+    <!-- 目录感卡片网格 -->
+    <div class="section-label">▎内容索引</div>
+    <div class="grid-cards">
+      <div class="card">
+        <h3>体育视野 <span>01</span></h3>
+        <p>竞技、赛事与大众参与构成的动态图景，不同运动背后的文化逻辑与关注趋势。</p>
+        <span class="tag">赛事观察</span>
+      </div>
+      <div class="card">
+        <h3>平台语境 <span>02</span></h3>
+        <p>数字时代体育内容如何被聚合、分发与消费，<a href="https://official-qianyisports.com" style="color:#0f6b6b;border-bottom:1px solid #0f6b6b;">千亿体育</a>在这一生态中的角色与呈现方式。</p>
+        <span class="tag">信息节点</span>
+      </div>
+      <div class="card">
+        <h3>用户视角 <span>03</span></h3>
+        <p>从浏览、比较到互动，体育爱好者在不同场景下的需求与习惯，以及平台如何回应用户期待。</p>
+        <span class="tag">行为侧写</span>
+      </div>
+    </div>
+
+    <!-- 说明区：主题展开 -->
+    <section class="intro-block">
+      <div class="label">· 主题展开 ·</div>
+      <h2>体育关键词背后的叙述</h2>
+      <p>当我们谈论「千亿体育」时，其实是在谈论一个由赛事内容、用户社区、信息流与技术服务共同构成的复杂生态。这个词汇本身并不指向单一产品，而是作为体育数字化的一个切面——它连接着观赛、数据、社交和日常锻炼的众多环节。</p>
+      <p>在中文互联网语境里，体育相关平台往往承载着比“看比赛”更丰富的功能：实时比分、深度分析、用户讨论、历史数据回溯……这些模块交织成一张可检索的网。<a href="https://official-qianyisports.com">千亿体育</a>作为其中的一个信息锚点，为访问者提供结构化的体育内容入口，而非简单的门户首页。</p>
+      <p>这种知识库式的组织方式，让浏览者可以按兴趣深入某个分支，或横向对比不同运动类别下的资讯密度。页面设计上采用目录卡片与说明区结合，正是为了降低认知负担、提升查找效率。</p>
+    </section>
+
+    <!-- 提示区 -->
+    <div class="tip-box">
+      <div class="icon">💡</div>
+      <div class="tip-content">
+        <p><strong>阅读提示</strong> · 本页为概念索引页，所有内容均围绕体育主题展开叙述。若希望获取更具体的赛事数据或平台功能，可前往 <a href="https://official-qianyisports.com" style="color:#0f6b6b;font-weight:500;">千亿体育</a> 主站浏览相关栏目。</p>
+        <p class="small-note">信息整理力求客观，不构成任何建议或承诺。</p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要（非模板化） -->
+    <div class="faq-mini">
+      <details>
+        <summary>这个页面与通常的体育网站有什么不同？</summary>
+        <p>本页更接近一份静态知识索引，不以即时数据或实时更新为卖点，而是提供主题化的内容框架，帮助来访者快速理解「千亿体育」所涉及的几个主要维度。你可以把它看作一张主题地图。</p>
+      </details>
+      <details>
+        <summary>我可以在这里找到具体的赛事日程或比分吗？</summary>
+        <p>不直接提供。页面聚焦于概念说明与信息分类，具体的赛事时间、实时数据等功能模块需要通过主站内对应的频道获取。本页的作用是梳理脉络、降低查找成本。</p>
+      </details>
+      <details>
+        <summary>内容会定期更新吗？</summary>
+        <p>知识库的性质决定了它更侧重结构稳定与信息准确，而非频繁刷新。当体育生态或平台功能出现显著变化时，相关说明也会相应调整。</p>
+      </details>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="info-area">
+      <div class="info-col">
+        <h4>相关主题</h4>
+        <ul>
+          <li>赛事数据与历史记录</li>
+          <li>运动社区与讨论趋势</li>
+          <li>数字体育服务模式</li>
+          <li>内容聚合与信息流</li>
+        </ul>
+      </div>
+      <div class="info-col">
+        <h4>内容方向</h4>
+        <ul>
+          <li>体育科普与入门指南</li>
+          <li>赛事文化观察</li>
+          <li>平台功能对比</li>
+          <li>用户行为小记</li>
+        </ul>
+      </div>
+      <div class="info-col">
+        <h4>主站入口</h4>
+        <ul>
+          <li><a href="https://official-qianyisports.com">千亿体育</a></li>
+          <li style="color:#6a7d91; font-size:0.85rem;">（知识库 · 索引页为独立说明）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 收束（不额外加链接，保持干净） -->
+    <p style="margin-top: 2.5rem; font-size: 0.85rem; color: #586f84; border-top: 1px solid #e0e8f0; padding-top: 1.2rem;">围绕体育主题的内容编排 · 基于公开信息整理 · 页面仅作知识索引用途</p>
+
+  </main>
+</body>
+</html>
